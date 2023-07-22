@@ -14,6 +14,18 @@ const Blog = () => {
         })
     }
 
+    function deletePost(){
+        setListOfPosts(previousPost =>{          
+
+            let updatedList = [...previousPost]
+
+            updatedList.shift()
+
+            return updatedList
+            
+        })
+    }
+
   return (
     <>
 
@@ -32,16 +44,16 @@ const Blog = () => {
     Optional TODO: Add dates to the posts
     */}
 
-    <BlogPost addToList={addToList}/>
+    <BlogPost addToList={addToList} deletePost={deletePost}/>
 
 
     {listOfPosts.map(post =>{
         return(
             <>
-            
-            <h2>{post.title}</h2>
-            <h3>{post.author}</h3>
-            <p>{post.content}</p>
+            <h2>Title: {post.title}</h2>
+            <h3>Author: {post.author}</h3>
+            <h6>{post.postDate} / {post.postTime}</h6>
+            <p>Content: {post.content}</p>
             <hr />
             </>
         )
